@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books List</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/project2.css" />
+    <script>
+                $(document).ready(function() {
+                    $('#BooksList').DataTable({
+					            "aaData": data,
+								"aoColumns": [
+									{ "sTitle": "title" },
+									{ "sTitle": "authors" },
+									{ "sTitle": "publishedDate" },
+									{ "sTitle": "description" },
+									{ "sTitle": "pageCount" },
+									{ "sTitle": "id" }
+                                             ]
+                        //"order": [[1, "asc"]]
+                    });
+        });
+
+        $(document).ready(function () {
+            $('#BooksList').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "data": "BooksList",
+                    "type": "GET"
+                },
+                "columns": [
+                    { "data": "title" },
+                    { "data": "author" },
+                    { "data": "copyright" },
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <table id="BooksList" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>authors</th>
+                <th>publishedDate</th>
+                <th>description</th>
+                <th>pageCount</th>
+                <th>id</th>
+            </tr>
+        </thead>
+    </table>
+    <a href="GetBooks.html" class="btn btn-primary">Search Again<a>
+</body>
+</html>
